@@ -15,6 +15,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		453166672618A43C0063A1F1 /* AR Session 3.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = "AR Session 3.mov"; path = "../../../../Downloads/AR Session 3.mov"; sourceTree = "<group>"; };
+		4531666C2618B0440063A1F1 /* AR Session 4.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = "AR Session 4.mov"; path = "../../../../Downloads/CapturingBodyMotionIn3D/AR Session 4.mov"; sourceTree = "<group>"; };
 		45C82F1D258691FF005C91ED /* SquatAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SquatAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45C82F20258691FF005C91ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		45C82F22258691FF005C91ED /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -38,6 +40,8 @@
 		45C82F14258691FF005C91ED = {
 			isa = PBXGroup;
 			children = (
+				453166672618A43C0063A1F1 /* AR Session 3.mov */,
+				4531666C2618B0440063A1F1 /* AR Session 4.mov */,
 				45C82F1F258691FF005C91ED /* SquatAR */,
 				45C82F1E258691FF005C91ED /* Products */,
 			);
@@ -201,7 +205,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -256,7 +260,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
