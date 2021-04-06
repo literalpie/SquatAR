@@ -37,9 +37,11 @@ struct ContentView: View {
 
 class PoopBrains: NSObject, ARSessionDelegate, ObservableObject {
   @Published var pooping = false
+  var poopingDuration = 0
+  var notPoopingDuration = 0
   @Published var poopPosition: SIMD3<Float>?
   weak var session: ARSession?
-  
+
   public func session(_ session: ARSession, didUpdate anchors: [ARAnchor]) {
     for anchor in anchors {
       guard let bodyAnchor = anchor as? ARBodyAnchor
@@ -74,15 +76,22 @@ class PoopBrains: NSObject, ARSessionDelegate, ObservableObject {
 
       if leftUpperLegLength < leftLowerLegLength * 0.6 && rightUpperLegLength < rightLowerLegLength * 0.6 {
         if !pooping {
-          self.pooping = true
+          poopingDuration = 0
+          notPoopingDuration += 1
+          if notPoopingDuration > 5 {
+            self.pooping = true
+          }
         }
         var translation = otherRoot.translation
         translation.y = translation.y - 1 // I think this is because the position of the poop model is off
         self.poopPosition = translation
         
       } else if pooping {
-        pooping = false
-        poopPosition = nil
+        poopingDuration += 1
+        if poopingDuration > 5 {
+          pooping = false
+          poopPosition = nil          
+        }
       }
     }
   }
