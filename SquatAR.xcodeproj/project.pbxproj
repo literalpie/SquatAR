@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		45667926261D131D0005FFB5 /* ARButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45667925261D131D0005FFB5 /* ARButtonView.swift */; };
 		45C82F21258691FF005C91ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C82F20258691FF005C91ED /* AppDelegate.swift */; };
 		45C82F23258691FF005C91ED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C82F22258691FF005C91ED /* ContentView.swift */; };
 		45C82F25258691FF005C91ED /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 45C82F24258691FF005C91ED /* Experience.rcproject */; };
@@ -15,8 +16,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		453166672618A43C0063A1F1 /* AR Session 3.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = "AR Session 3.mov"; path = "../../../../Downloads/AR Session 3.mov"; sourceTree = "<group>"; };
 		4531666C2618B0440063A1F1 /* AR Session 4.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = "AR Session 4.mov"; path = "../../../../Downloads/CapturingBodyMotionIn3D/AR Session 4.mov"; sourceTree = "<group>"; };
+		45667925261D131D0005FFB5 /* ARButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARButtonView.swift; sourceTree = "<group>"; };
 		45C82F1D258691FF005C91ED /* SquatAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SquatAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45C82F20258691FF005C91ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		45C82F22258691FF005C91ED /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -40,7 +41,6 @@
 		45C82F14258691FF005C91ED = {
 			isa = PBXGroup;
 			children = (
-				453166672618A43C0063A1F1 /* AR Session 3.mov */,
 				4531666C2618B0440063A1F1 /* AR Session 4.mov */,
 				45C82F1F258691FF005C91ED /* SquatAR */,
 				45C82F1E258691FF005C91ED /* Products */,
@@ -64,6 +64,7 @@
 				45C82F2625869202005C91ED /* Assets.xcassets */,
 				45C82F2B25869202005C91ED /* Info.plist */,
 				45C82F2825869202005C91ED /* Preview Content */,
+				45667925261D131D0005FFB5 /* ARButtonView.swift */,
 			);
 			path = SquatAR;
 			sourceTree = "<group>";
@@ -148,6 +149,7 @@
 				45C82F23258691FF005C91ED /* ContentView.swift in Sources */,
 				45C82F21258691FF005C91ED /* AppDelegate.swift in Sources */,
 				45C82F25258691FF005C91ED /* Experience.rcproject in Sources */,
+				45667926261D131D0005FFB5 /* ARButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
