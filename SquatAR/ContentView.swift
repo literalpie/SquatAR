@@ -12,11 +12,37 @@ import os.log
 
 struct ContentView: View {
   @ObservedObject var poopBrains = PoopBrains()
-  
+  @State var showingHelp = false
   var body: some View {
-    ARViewContainer(brains: poopBrains)
-      .edgesIgnoringSafeArea(.all)
-      .overlay(overlayView)
+    ZStack {
+      ARViewContainer(brains: poopBrains)
+        .edgesIgnoringSafeArea(.all)
+        .overlay(overlayView)
+      if showingHelp {
+        VStack {
+          Spacer()
+          HStack {
+            Spacer()
+            ARButtonView {
+              showingHelp = false
+            } content: {
+              Image(systemName: "xmark")
+            }
+            .accessibility(label: Text("Close"))
+          }.padding(.horizontal)
+          BlurTextView {
+            VStack {
+              Text(
+                "To use this app, have someone squat while you look at them through your device. This will cause poop to appear on their butt!")
+              .padding()
+              Text("\"3d Poop Emoji\" by Dimensión N is licensed under Creative Commons Attribution.").padding(.horizontal)
+            }
+          }.padding()
+          Spacer()
+        }
+        .background(Color.gray.opacity(0.6).edgesIgnoringSafeArea(.all))
+      }
+    }
   }
   
   var overlayView: some View {
@@ -24,10 +50,18 @@ struct ContentView: View {
       HStack {
         Spacer()
         ARButtonView {
+          showingHelp = true
+        } content: {
+          Image(systemName: "questionmark")
+        }
+        .accessibility(label: Text("Help"))
+        .padding()
+        ARButtonView {
           poopBrains.resetSession()
         } content: {
           Image(systemName: "arrow.triangle.2.circlepath")
         }
+        .accessibility(label: Text("Reset AR Session"))
         .padding()
       }
       Spacer()
@@ -187,7 +221,18 @@ struct ARViewContainer: UIViewRepresentable {
       uiView.movePoop(to: position, with: brains.poopScale)
     }
   }
+}
 
+struct BlurTextView<Content: View>: View {
+  var content: () -> Content
+  var body: some View {
+    content()
+      .foregroundColor(.white)
+//      .frame(height: 100, alignment: .center)
+      .padding()
+      .background(BlurView(style: .dark))
+      .clipShape(RoundedRectangle(cornerRadius: 15))
+  }
 }
 
 #if DEBUG
