@@ -16,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4530CEED261E7E3500C02955 /* poop.blend */ = {isa = PBXFileReference; lastKnownFileType = file; path = poop.blend; sourceTree = "<group>"; };
 		4531666C2618B0440063A1F1 /* AR Session 4.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = "AR Session 4.mov"; path = "../../../../Downloads/CapturingBodyMotionIn3D/AR Session 4.mov"; sourceTree = "<group>"; };
 		45667925261D131D0005FFB5 /* ARButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARButtonView.swift; sourceTree = "<group>"; };
 		45667927261D1B750005FFB5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -46,6 +47,7 @@
 				45667927261D1B750005FFB5 /* README.md */,
 				45667929261D42030005FFB5 /* app-preview.gif */,
 				4531666C2618B0440063A1F1 /* AR Session 4.mov */,
+				4530CEED261E7E3500C02955 /* poop.blend */,
 				45C82F1F258691FF005C91ED /* SquatAR */,
 				45C82F1E258691FF005C91ED /* Products */,
 			);
