@@ -40,6 +40,7 @@ class PoopBrains: NSObject, ARSessionDelegate, ObservableObject {
   var poopingDuration = 0
   var notPoopingDuration = 0
   @Published var poopPosition: SIMD3<Float>?
+  @Published var poopScale: Float = 1
   weak var session: ARSession?
 
   public func session(_ session: ARSession, didUpdate anchors: [ARAnchor]) {
@@ -75,22 +76,22 @@ class PoopBrains: NSObject, ARSessionDelegate, ObservableObject {
       let rightUpperLegLength = rightUpLegTransformThing.translation.y - rightMidLegTransformThing.translation.y
 
       if leftUpperLegLength < leftLowerLegLength * 0.6 && rightUpperLegLength < rightLowerLegLength * 0.6 {
+        poopingDuration += 1
+        let poopScale = Float(poopingDuration) * 0.1
+        self.poopScale = max(min(poopScale, 8), 2)
         if !pooping {
-          poopingDuration = 0
-          notPoopingDuration += 1
-          if notPoopingDuration > 5 {
+          notPoopingDuration = 0
+          if poopingDuration > 5 {
             self.pooping = true
           }
         }
-        var translation = otherRoot.translation
-        translation.y = translation.y - 1 // I think this is because the position of the poop model is off
-        self.poopPosition = translation
-        
+        self.poopPosition = otherRoot.translation
       } else if pooping {
-        poopingDuration += 1
-        if poopingDuration > 5 {
+        poopingDuration = 0
+        notPoopingDuration += 1
+        if notPoopingDuration > 5 {
           pooping = false
-          poopPosition = nil          
+          poopPosition = nil
         }
       }
     }
@@ -141,6 +142,7 @@ class PoopArView: ARView, ARCoachingOverlayViewDelegate {
   // trigger when pooping becomes true
   public func startPoop() {
     activePoop = boxAnchor.poop?.clone(recursive: true)
+    activePoop?.scale = SIMD3(repeating: 0)
     (activePoop as? HasPhysics)?.physicsBody?.mode = .static
     activePoop?.isEnabled = true
     boxAnchor.addChild(activePoop!)
@@ -148,8 +150,9 @@ class PoopArView: ARView, ARCoachingOverlayViewDelegate {
   }
   
   // trigger when position changes
-  public func movePoop(to position: SIMD3<Float>) {
+  public func movePoop(to position: SIMD3<Float>, with scale: Float) {
     activePoop?.setPosition(position, relativeTo: nil)
+    activePoop?.scale = SIMD3(repeating: scale)
   }
   
   // trigger when pooping becomes false
@@ -158,7 +161,6 @@ class PoopArView: ARView, ARCoachingOverlayViewDelegate {
     (activePoop as? HasPhysics)?.physicsBody?.mode = PhysicsBodyMode.dynamic  // add gravity
     poopSize = 0
   }
-
 }
 
 struct ARViewContainer: UIViewRepresentable {
@@ -182,7 +184,7 @@ struct ARViewContainer: UIViewRepresentable {
     }
     
     if let position = brains.poopPosition {
-      uiView.movePoop(to: position)
+      uiView.movePoop(to: position, with: brains.poopScale)
     }
   }
 
