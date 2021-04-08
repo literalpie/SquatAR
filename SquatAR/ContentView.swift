@@ -14,33 +14,38 @@ struct ContentView: View {
   @ObservedObject var poopBrains = PoopBrains()
   @State var showingHelp = false
   var body: some View {
-    ZStack {
-      ARViewContainer(brains: poopBrains)
-        .edgesIgnoringSafeArea(.all)
-        .overlay(overlayView)
-      if showingHelp {
-        VStack {
-          Spacer()
-          HStack {
+    if poopBrains.cameraAccessError {
+      Text("This app cannot work without access to the camera!")
+      Button("Settings") {
+        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+      }
+    } else {
+      ZStack {
+        ARViewContainer(brains: poopBrains)
+          .edgesIgnoringSafeArea(.all)
+          .overlay(overlayView)
+        if showingHelp {
+          VStack {
             Spacer()
-            ARButtonView {
-              showingHelp = false
-            } content: {
-              Image(systemName: "xmark")
-            }
-            .accessibility(label: Text("Close"))
-          }.padding(.horizontal)
-          BlurTextView {
-            VStack {
-              Text(
-                "To use this app, have someone squat while you look at them through your device. This will cause poop to appear on their butt!")
-              .padding()
-              Text("\"3d Poop Emoji\" by Dimensión N is licensed under Creative Commons Attribution.").padding(.horizontal)
-            }
-          }.padding()
-          Spacer()
+            HStack {
+              Spacer()
+              ARButtonView {
+                showingHelp = false
+              } content: {
+                Image(systemName: "xmark")
+              }
+              .accessibility(label: Text("Close"))
+            }.padding(.horizontal)
+            BlurTextView {
+              VStack {
+                Text(
+                  "To use this app, have someone squat while you look at them through your device. This will cause poop to appear on their butt!\n \n\"3d Poop Emoji\" by Dimensión N is licensed under Creative Commons Attribution.")
+              }
+            }.padding()
+            Spacer()
+          }
+          .background(Color.gray.opacity(0.6).edgesIgnoringSafeArea(.all))
         }
-        .background(Color.gray.opacity(0.6).edgesIgnoringSafeArea(.all))
       }
     }
   }
@@ -75,6 +80,7 @@ class PoopBrains: NSObject, ARSessionDelegate, ObservableObject {
   var notPoopingDuration = 0
   @Published var poopPosition: SIMD3<Float>?
   @Published var poopScale: Float = 1
+  @Published var cameraAccessError = false
   weak var session: ARSession?
 
   public func session(_ session: ARSession, didUpdate anchors: [ARAnchor]) {
@@ -128,6 +134,12 @@ class PoopBrains: NSObject, ARSessionDelegate, ObservableObject {
           poopPosition = nil
         }
       }
+    }
+  }
+  
+  func session(_ session: ARSession, didFailWithError error: Error) {
+    if (error as? ARError)?.code == .cameraUnauthorized {
+      self.cameraAccessError = true
     }
   }
   
