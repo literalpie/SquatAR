@@ -24,43 +24,51 @@ struct ContentView: View {
         ARViewContainer(brains: poopBrains)
           .edgesIgnoringSafeArea(.all)
           .overlay(overlayView)
-        if showingHelp {
-          VStack {
-            Spacer()
-            HStack {
+        VStack {
+          if showingHelp {
+            VStack {
               Spacer()
-              ARButtonView {
-                showingHelp = false
-              } content: {
-                Image(systemName: "xmark")
+              HStack {
+                Spacer()
+                ARButtonView {
+                  withAnimation {
+                    showingHelp = false
+                  }
+                } content: {
+                  Image(systemName: "xmark")
+                }
+                .accessibility(label: Text("Close"))
+              }.padding(.horizontal)
+              BlurTextView {
+                VStack {
+                  Text(
+                    "To use this app, have someone squat while you look at them through your device. This will cause poop to appear on their butt!\n \n\"3d Poop Emoji\" by Dimensión N is licensed under Creative Commons Attribution.")
+                }
               }
-              .accessibility(label: Text("Close"))
-            }.padding(.horizontal)
-            BlurTextView {
-              VStack {
-                Text(
-                  "To use this app, have someone squat while you look at them through your device. This will cause poop to appear on their butt!\n \n\"3d Poop Emoji\" by Dimensión N is licensed under Creative Commons Attribution.")
-              }
-            }.padding()
-            Spacer()
+              .padding()
+              
+              Spacer()
+            }
+            .background(Color.gray.opacity(0.6).edgesIgnoringSafeArea(.all))
           }
-          .background(Color.gray.opacity(0.6).edgesIgnoringSafeArea(.all))
         }
+        .animation(.easeInOut)
       }
     }
   }
-  
+
   var overlayView: some View {
     VStack {
       HStack {
         Spacer()
         ARButtonView {
-          showingHelp = true
+          withAnimation {
+            showingHelp = true
+          }
         } content: {
           Image(systemName: "questionmark")
         }
         .accessibility(label: Text("Help"))
-        .padding()
         ARButtonView {
           poopBrains.resetSession()
         } content: {
@@ -81,7 +89,7 @@ class PoopBrains: NSObject, ARSessionDelegate, ObservableObject {
   @Published var poopPosition: SIMD3<Float>?
   @Published var poopScale: Float = 1
   @Published var cameraAccessError = false
-  weak var session: ARSession?
+  weak var arSession: ARSession?
 
   public func session(_ session: ARSession, didUpdate anchors: [ARAnchor]) {
     for anchor in anchors {
@@ -136,17 +144,17 @@ class PoopBrains: NSObject, ARSessionDelegate, ObservableObject {
       }
     }
   }
-  
+
   func session(_ session: ARSession, didFailWithError error: Error) {
     if (error as? ARError)?.code == .cameraUnauthorized {
       self.cameraAccessError = true
     }
   }
-  
+
   public func resetSession() {
     let config = ARBodyTrackingConfiguration()
     config.planeDetection = .horizontal
-    session?.run(config, options: [ARSession.RunOptions.resetTracking])
+    arSession?.run(config, options: [ARSession.RunOptions.resetTracking])
   }
 }
 
@@ -156,7 +164,7 @@ class PoopArView: ARView, ARCoachingOverlayViewDelegate {
   var poopSize = 0
   var boxAnchor: Experience.Box!  // includes the poop, floor, and environment to make gravity work
   var baseIndicator: ModelEntity!
-  
+
   func addCoaching() {
     let coachingOverlay = ARCoachingOverlayView()
     coachingOverlay.delegate = self
@@ -181,10 +189,6 @@ class PoopArView: ARView, ARCoachingOverlayViewDelegate {
     boxAnchor.addChild(baseIndicator)
   }
 
-  public func session(_ session: ARSession, didAdd anchors: [ARAnchor]) {
-
-  }
-  
   // trigger when pooping becomes true
   public func startPoop() {
     activePoop = boxAnchor.poop?.clone(recursive: true)
@@ -194,13 +198,13 @@ class PoopArView: ARView, ARCoachingOverlayViewDelegate {
     boxAnchor.addChild(activePoop!)
     pooping = true
   }
-  
+
   // trigger when position changes
   public func movePoop(to position: SIMD3<Float>, with scale: Float) {
     activePoop?.setPosition(position, relativeTo: nil)
     activePoop?.scale = SIMD3(repeating: scale)
   }
-  
+
   // trigger when pooping becomes false
   public func dropPoop() {
     pooping = false
@@ -216,7 +220,7 @@ struct ARViewContainer: UIViewRepresentable {
     let arView = PoopArView(frame: .zero)
     arView.addCoaching()
     arView.session.delegate = brains
-    brains.session = arView.session
+    brains.arSession = arView.session
     brains.resetSession()
     return arView
   }
@@ -228,7 +232,7 @@ struct ARViewContainer: UIViewRepresentable {
     if !brains.pooping && uiView.pooping {
       uiView.dropPoop()
     }
-    
+
     if let position = brains.poopPosition {
       uiView.movePoop(to: position, with: brains.poopScale)
     }
