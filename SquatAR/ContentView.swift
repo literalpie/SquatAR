@@ -89,12 +89,18 @@ class PoopBrains: NSObject, ARSessionDelegate, ObservableObject {
   @Published var poopPosition: SIMD3<Float>?
   @Published var poopScale: Float = 1
   @Published var cameraAccessError = false
+  @Published var readyToSetup = false
   weak var arSession: ARSession?
 
   public func session(_ session: ARSession, didUpdate anchors: [ARAnchor]) {
-    for anchor in anchors {
-      guard let bodyAnchor = anchor as? ARBodyAnchor
-      else { continue }
+    if !readyToSetup {
+      readyToSetup = true
+    }
+
+    let bodyAnchors = anchors.compactMap{ $0 as? ARBodyAnchor }
+
+    // TODO: support multiple bodies
+    if let bodyAnchor = bodyAnchors.first {
       let otherRoot = Transform(matrix: bodyAnchor.transform)
       let jointNames = bodyAnchor.skeleton.definition.jointNames
       guard jointNames[1] == "hips_joint",
@@ -117,30 +123,42 @@ class PoopBrains: NSObject, ARSessionDelegate, ObservableObject {
       let rightMidLegTransformThing = Transform(matrix: bodyAnchor.skeleton.jointModelTransforms[8])
       let footTransformThing = Transform(matrix: bodyAnchor.skeleton.jointModelTransforms[4])
       let rightFootTransform = Transform(matrix: bodyAnchor.skeleton.jointModelTransforms[9])
-
+      
       let leftLowerLegLength = midLegTransformThing.translation.y - footTransformThing.translation.y
       let leftUpperLegLength = upLegTransformThing.translation.y - midLegTransformThing.translation.y
       let rightLowerLegLength = rightMidLegTransformThing.translation.y - rightFootTransform.translation.y
       let rightUpperLegLength = rightUpLegTransformThing.translation.y - rightMidLegTransformThing.translation.y
-
+      
       if leftUpperLegLength < leftLowerLegLength * 0.6 && rightUpperLegLength < rightLowerLegLength * 0.6 {
-        poopingDuration += 1
-        let poopScale = Float(poopingDuration) * 0.1
-        self.poopScale = max(min(poopScale, 8), 2)
-        if !pooping {
-          notPoopingDuration = 0
-          if poopingDuration > 5 {
-            self.pooping = true
-          }
-        }
-        self.poopPosition = otherRoot.translation
-      } else if pooping {
-        poopingDuration = 0
-        notPoopingDuration += 1
-        if notPoopingDuration > 5 {
-          pooping = false
-          poopPosition = nil
-        }
+        handlePooping(otherRoot)
+      } else {
+        handleNotPooping()
+      }
+    }
+  }
+  
+  func handlePooping(_ root: Transform) {
+    poopingDuration += 1
+    let poopScale = Float(poopingDuration) * 0.1
+    if !pooping {
+      notPoopingDuration = 0
+      if poopingDuration > 5 {
+        self.pooping = true
+      }
+    } else {
+      // only set the scale and position if the poop has started (we don't want to set it on the previous poop)
+      self.poopScale = max(min(poopScale, 8), 2)
+      self.poopPosition = root.translation
+    }
+  }
+  
+  func handleNotPooping() {
+    if pooping {
+      poopingDuration = 0
+      notPoopingDuration += 1
+      if notPoopingDuration > 5 {
+        pooping = false
+        poopPosition = nil
       }
     }
   }
@@ -163,7 +181,7 @@ class PoopArView: ARView, ARCoachingOverlayViewDelegate {
   var activePoop: Entity?
   var poopSize = 0
   var boxAnchor: Experience.Box!  // includes the poop, floor, and environment to make gravity work
-  var baseIndicator: ModelEntity!
+  var setUp = false
 
   func addCoaching() {
     let coachingOverlay = ARCoachingOverlayView()
@@ -174,23 +192,22 @@ class PoopArView: ARView, ARCoachingOverlayViewDelegate {
     coachingOverlay.goal = .anyPlane
     self.addSubview(coachingOverlay)
   }
-
-  public func coachingOverlayViewDidDeactivate(_ coachingOverlayView: ARCoachingOverlayView) {
+  
+  func setupPoop() {
     boxAnchor = try! Experience.loadBox()
-
+    
     (boxAnchor.poop as? HasPhysics)?.physicsBody?.mode = .static
     boxAnchor.poop?.isEnabled = false
     self.scene.addAnchor(boxAnchor)
-
-    baseIndicator = ModelEntity(
-      mesh: .generatePlane(width: 0.5, depth: 0.5, cornerRadius: 0.5),
-      materials: [SimpleMaterial(color: .blue, isMetallic: true)])
-    baseIndicator.isEnabled = false
-    boxAnchor.addChild(baseIndicator)
+    setUp = true
   }
 
   // trigger when pooping becomes true
   public func startPoop() {
+    if boxAnchor == nil {
+      print("no box?")
+    }
+    
     activePoop = boxAnchor.poop?.clone(recursive: true)
     activePoop?.scale = SIMD3(repeating: 0)
     (activePoop as? HasPhysics)?.physicsBody?.mode = .static
@@ -235,6 +252,10 @@ struct ARViewContainer: UIViewRepresentable {
 
     if let position = brains.poopPosition {
       uiView.movePoop(to: position, with: brains.poopScale)
+    }
+    
+    if brains.readyToSetup && !uiView.setUp {
+      uiView.setupPoop()
     }
   }
 }

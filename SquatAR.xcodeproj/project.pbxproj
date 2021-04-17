@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		453605B5262B20C800A0FEA9 /* AR Session 6.mov in Resources */ = {isa = PBXBuildFile; fileRef = 453605B4262B20C800A0FEA9 /* AR Session 6.mov */; };
+		453605B7262B22A300A0FEA9 /* Circles.mov in Resources */ = {isa = PBXBuildFile; fileRef = 453605B6262B22A300A0FEA9 /* Circles.mov */; };
 		45667926261D131D0005FFB5 /* ARButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45667925261D131D0005FFB5 /* ARButtonView.swift */; };
+		45C5A0E22621E6C600D2FE38 /* AR Session 5.mov in Resources */ = {isa = PBXBuildFile; fileRef = 45C5A0E12621E6C600D2FE38 /* AR Session 5.mov */; };
 		45C82F21258691FF005C91ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C82F20258691FF005C91ED /* AppDelegate.swift */; };
 		45C82F23258691FF005C91ED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C82F22258691FF005C91ED /* ContentView.swift */; };
 		45C82F25258691FF005C91ED /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 45C82F24258691FF005C91ED /* Experience.rcproject */; };
@@ -18,9 +21,12 @@
 /* Begin PBXFileReference section */
 		4530CEED261E7E3500C02955 /* poop.blend */ = {isa = PBXFileReference; lastKnownFileType = file; path = poop.blend; sourceTree = "<group>"; };
 		4531666C2618B0440063A1F1 /* AR Session 4.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = "AR Session 4.mov"; path = "../../../../Downloads/CapturingBodyMotionIn3D/AR Session 4.mov"; sourceTree = "<group>"; };
+		453605B4262B20C800A0FEA9 /* AR Session 6.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "AR Session 6.mov"; sourceTree = "<group>"; };
+		453605B6262B22A300A0FEA9 /* Circles.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Circles.mov; sourceTree = "<group>"; };
 		45667925261D131D0005FFB5 /* ARButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARButtonView.swift; sourceTree = "<group>"; };
 		45667927261D1B750005FFB5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		45667929261D42030005FFB5 /* app-preview.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "app-preview.gif"; sourceTree = "<group>"; };
+		45C5A0E12621E6C600D2FE38 /* AR Session 5.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "AR Session 5.mov"; sourceTree = "<group>"; };
 		45C82F1D258691FF005C91ED /* SquatAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SquatAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45C82F20258691FF005C91ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		45C82F22258691FF005C91ED /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -47,6 +53,9 @@
 				45667927261D1B750005FFB5 /* README.md */,
 				45667929261D42030005FFB5 /* app-preview.gif */,
 				4531666C2618B0440063A1F1 /* AR Session 4.mov */,
+				45C5A0E12621E6C600D2FE38 /* AR Session 5.mov */,
+				453605B4262B20C800A0FEA9 /* AR Session 6.mov */,
+				453605B6262B22A300A0FEA9 /* Circles.mov */,
 				4530CEED261E7E3500C02955 /* poop.blend */,
 				45C82F1F258691FF005C91ED /* SquatAR */,
 				45C82F1E258691FF005C91ED /* Products */,
@@ -141,7 +150,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				45C82F2A25869202005C91ED /* Preview Assets.xcassets in Resources */,
+				453605B5262B20C800A0FEA9 /* AR Session 6.mov in Resources */,
 				45C82F2725869202005C91ED /* Assets.xcassets in Resources */,
+				45C5A0E22621E6C600D2FE38 /* AR Session 5.mov in Resources */,
+				453605B7262B22A300A0FEA9 /* Circles.mov in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,7 +296,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "SquatAR/Preview\\ Content";
 				DEVELOPMENT_TEAM = Z6E4CU9G46;
 				ENABLE_PREVIEWS = YES;
@@ -306,7 +318,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "SquatAR/Preview\\ Content";
 				DEVELOPMENT_TEAM = Z6E4CU9G46;
 				ENABLE_PREVIEWS = YES;
