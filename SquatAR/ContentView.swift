@@ -204,9 +204,6 @@ class PoopArView: ARView, ARCoachingOverlayViewDelegate {
 
   // trigger when pooping becomes true
   public func startPoop() {
-    if boxAnchor == nil {
-      print("no box?")
-    }
     
     activePoop = boxAnchor.poop?.clone(recursive: true)
     activePoop?.scale = SIMD3(repeating: 0)
@@ -265,7 +262,6 @@ struct BlurTextView<Content: View>: View {
   var body: some View {
     content()
       .foregroundColor(.white)
-//      .frame(height: 100, alignment: .center)
       .padding()
       .background(BlurView(style: .dark))
       .clipShape(RoundedRectangle(cornerRadius: 15))
