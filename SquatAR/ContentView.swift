@@ -19,6 +19,8 @@ struct ContentView: View {
       Button("Settings") {
         UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
       }
+    } else if poopBrains.unsupportedDeviceError {
+      Text("Sorry, your device does not have all of the features required by this app.")
     } else {
       ZStack {
         ARViewContainer(brains: poopBrains)
@@ -89,6 +91,7 @@ class PoopBrains: NSObject, ARSessionDelegate, ObservableObject {
   @Published var poopPosition: SIMD3<Float>?
   @Published var poopScale: Float = 1
   @Published var cameraAccessError = false
+  @Published var unsupportedDeviceError = false
   @Published var readyToSetup = false
   weak var arSession: ARSession?
 
@@ -166,6 +169,10 @@ class PoopBrains: NSObject, ARSessionDelegate, ObservableObject {
   func session(_ session: ARSession, didFailWithError error: Error) {
     if (error as? ARError)?.code == .cameraUnauthorized {
       self.cameraAccessError = true
+    }
+    
+    if (error as? ARError)?.code == .unsupportedConfiguration {
+      self.unsupportedDeviceError = true
     }
   }
 

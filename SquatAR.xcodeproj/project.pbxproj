@@ -7,11 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		453605B5262B20C800A0FEA9 /* AR Session 6.mov in Resources */ = {isa = PBXBuildFile; fileRef = 453605B4262B20C800A0FEA9 /* AR Session 6.mov */; };
-		453605B7262B22A300A0FEA9 /* Circles.mov in Resources */ = {isa = PBXBuildFile; fileRef = 453605B6262B22A300A0FEA9 /* Circles.mov */; };
-		453605BB262B374800A0FEA9 /* Squat walking.mov in Resources */ = {isa = PBXBuildFile; fileRef = 453605BA262B374800A0FEA9 /* Squat walking.mov */; };
 		45667926261D131D0005FFB5 /* ARButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45667925261D131D0005FFB5 /* ARButtonView.swift */; };
-		45C5A0E22621E6C600D2FE38 /* AR Session 5.mov in Resources */ = {isa = PBXBuildFile; fileRef = 45C5A0E12621E6C600D2FE38 /* AR Session 5.mov */; };
 		45C82F21258691FF005C91ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C82F20258691FF005C91ED /* AppDelegate.swift */; };
 		45C82F23258691FF005C91ED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C82F22258691FF005C91ED /* ContentView.swift */; };
 		45C82F25258691FF005C91ED /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 45C82F24258691FF005C91ED /* Experience.rcproject */; };
@@ -153,11 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				45C82F2A25869202005C91ED /* Preview Assets.xcassets in Resources */,
-				453605B5262B20C800A0FEA9 /* AR Session 6.mov in Resources */,
-				453605BB262B374800A0FEA9 /* Squat walking.mov in Resources */,
 				45C82F2725869202005C91ED /* Assets.xcassets in Resources */,
-				45C5A0E22621E6C600D2FE38 /* AR Session 5.mov in Resources */,
-				453605B7262B22A300A0FEA9 /* Circles.mov in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
