@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		45612B33263C631F00B71596 /* MockARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45612B32263C631F00B71596 /* MockARView.swift */; };
 		45667926261D131D0005FFB5 /* ARButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45667925261D131D0005FFB5 /* ARButtonView.swift */; };
 		45C82F21258691FF005C91ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C82F20258691FF005C91ED /* AppDelegate.swift */; };
 		45C82F23258691FF005C91ED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C82F22258691FF005C91ED /* ContentView.swift */; };
@@ -17,10 +18,12 @@
 
 /* Begin PBXFileReference section */
 		4530CEED261E7E3500C02955 /* poop.blend */ = {isa = PBXFileReference; lastKnownFileType = file; path = poop.blend; sourceTree = "<group>"; };
-		4531666C2618B0440063A1F1 /* AR Session 4.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = "AR Session 4.mov"; path = "../../../../Downloads/CapturingBodyMotionIn3D/AR Session 4.mov"; sourceTree = "<group>"; };
 		453605B4262B20C800A0FEA9 /* AR Session 6.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "AR Session 6.mov"; sourceTree = "<group>"; };
 		453605B6262B22A300A0FEA9 /* Circles.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Circles.mov; sourceTree = "<group>"; };
 		453605BA262B374800A0FEA9 /* Squat walking.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "Squat walking.mov"; sourceTree = "<group>"; };
+		45612B25263C4B3500B71596 /* ipad-screen-recording.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ipad-screen-recording.mp4"; sourceTree = "<group>"; };
+		45612B30263C62A600B71596 /* AR Session 4.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "AR Session 4.mov"; sourceTree = "<group>"; };
+		45612B32263C631F00B71596 /* MockARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockARView.swift; sourceTree = "<group>"; };
 		45667925261D131D0005FFB5 /* ARButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARButtonView.swift; sourceTree = "<group>"; };
 		45667927261D1B750005FFB5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		45667929261D42030005FFB5 /* app-preview.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "app-preview.gif"; sourceTree = "<group>"; };
@@ -32,6 +35,9 @@
 		45C82F2625869202005C91ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		45C82F2925869202005C91ED /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		45C82F2B25869202005C91ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		45EDD76D26361B7A00E768E9 /* Another close poop.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "Another close poop.mov"; sourceTree = "<group>"; };
+		45EDD76F26361E6600E768E9 /* AR Session 10.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "AR Session 10.mov"; sourceTree = "<group>"; };
+		45EDD7702636203C00E768E9 /* app-recording.MP4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "app-recording.MP4"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,16 +51,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		45612B2F263C626400B71596 /* AR Sessions */ = {
+			isa = PBXGroup;
+			children = (
+				45612B30263C62A600B71596 /* AR Session 4.mov */,
+				45C5A0E12621E6C600D2FE38 /* AR Session 5.mov */,
+				453605B4262B20C800A0FEA9 /* AR Session 6.mov */,
+				453605B6262B22A300A0FEA9 /* Circles.mov */,
+				453605BA262B374800A0FEA9 /* Squat walking.mov */,
+				45612B25263C4B3500B71596 /* ipad-screen-recording.mp4 */,
+				45EDD76D26361B7A00E768E9 /* Another close poop.mov */,
+				45EDD76F26361E6600E768E9 /* AR Session 10.mov */,
+				45EDD7702636203C00E768E9 /* app-recording.MP4 */,
+			);
+			path = "AR Sessions";
+			sourceTree = "<group>";
+		};
 		45C82F14258691FF005C91ED = {
 			isa = PBXGroup;
 			children = (
 				45667927261D1B750005FFB5 /* README.md */,
 				45667929261D42030005FFB5 /* app-preview.gif */,
-				4531666C2618B0440063A1F1 /* AR Session 4.mov */,
-				45C5A0E12621E6C600D2FE38 /* AR Session 5.mov */,
-				453605B4262B20C800A0FEA9 /* AR Session 6.mov */,
-				453605B6262B22A300A0FEA9 /* Circles.mov */,
-				453605BA262B374800A0FEA9 /* Squat walking.mov */,
+				45612B2F263C626400B71596 /* AR Sessions */,
 				4530CEED261E7E3500C02955 /* poop.blend */,
 				45C82F1F258691FF005C91ED /* SquatAR */,
 				45C82F1E258691FF005C91ED /* Products */,
@@ -73,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				45C82F20258691FF005C91ED /* AppDelegate.swift */,
+				45612B32263C631F00B71596 /* MockARView.swift */,
 				45C82F22258691FF005C91ED /* ContentView.swift */,
 				45C82F24258691FF005C91ED /* Experience.rcproject */,
 				45C82F2625869202005C91ED /* Assets.xcassets */,
@@ -164,6 +183,7 @@
 				45C82F21258691FF005C91ED /* AppDelegate.swift in Sources */,
 				45C82F25258691FF005C91ED /* Experience.rcproject in Sources */,
 				45667926261D131D0005FFB5 /* ARButtonView.swift in Sources */,
+				45612B33263C631F00B71596 /* MockARView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,7 +312,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "SquatAR/Preview\\ Content";
 				DEVELOPMENT_TEAM = Z6E4CU9G46;
 				ENABLE_PREVIEWS = YES;
@@ -314,7 +334,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "SquatAR/Preview\\ Content";
 				DEVELOPMENT_TEAM = Z6E4CU9G46;
 				ENABLE_PREVIEWS = YES;
