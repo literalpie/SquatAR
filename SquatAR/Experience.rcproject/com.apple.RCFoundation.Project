@@ -25,7 +25,11 @@
                   "7F5F1ADC-E5E4-4EF5-A5B5-FC43B071FFA5" : null,
                   "85AD683B-DE8E-4B4E-AEDF-A17A8231A0FC" : null,
                   "632E476F-1E55-4E30-9723-1C51DD2E8B89" : null,
-                  "218384F5-7DAD-415F-872F-CB72B1B16016" : {
+                  "218384F5-7DAD-415F-872F-CB72B1B16016" : null,
+                  "A9523244-1BFB-4BC8-A403-CB8F9A138DEA" : null,
+                  "ADF332AA-EAC7-4312-8572-7B09685ACEBD" : null,
+                  "B91C7CA3-4AB1-4253-9A84-07383168A8A8" : null,
+                  "BBDF95B9-538D-44BB-9AA0-9FCC1BAB1F52" : {
                     "overrides" : {
                       "children" : {
                         "USDScene" : {
@@ -49,7 +53,7 @@
                                 "url",
                                 {
                                   "typeName" : "String",
-                                  "value" : "model:8a841e11ca276031aa280bc732679d63\/poop.usdz"
+                                  "value" : "model:c09668b1b5f5daf4f4b21d5df70385c9\/squatAR%20sphere.usdz"
                                 }
                               ],
                               [
@@ -69,7 +73,7 @@
                                 "RuntimeIdentifier",
                                 {
                                   "typeName" : "UUID",
-                                  "value" : "23C2F530-5A6F-45C9-A6FE-6EE70945CC41"
+                                  "value" : "18C84E87-4CAB-4D9E-AA71-D3D35916CC0E"
                                 }
                               ]
                             ]
@@ -105,14 +109,14 @@
                           "RuntimeIdentifier",
                           {
                             "typeName" : "UUID",
-                            "value" : "4E7AA025-37A9-4912-9E8A-C2D00066983B"
+                            "value" : "DDFE1BE4-3757-4C2D-8251-812DAFEE3C06"
                           }
                         ],
                         [
                           "entityName",
                           {
                             "typeName" : "String",
-                            "value" : "poop"
+                            "value" : "sphere"
                           }
                         ],
                         [
@@ -126,28 +130,25 @@
                     },
                     "transform" : {
                       "matrix" : [
-                        0.0078943325206637383,
-                        -2.6822073095900123e-07,
-                        0.99996817111968994,
+                        1,
                         0,
-                        0.99996829032897949,
-                        5.9604616353681195e-07,
-                        -0.0078941844403743744,
                         0,
-                        -4.4703460844175424e-07,
-                        0.99999940395355225,
-                        4.1723231447576836e-07,
                         0,
-                        -0.01110477838665247,
-                        -2.328305881427184e-10,
-                        0.012518987990915775,
+                        0,
+                        1,
+                        0,
+                        0,
+                        0,
+                        0,
+                        1,
+                        0,
+                        0,
+                        0.0072820861823856831,
+                        0,
                         1
                       ]
                     }
-                  },
-                  "A9523244-1BFB-4BC8-A403-CB8F9A138DEA" : null,
-                  "ADF332AA-EAC7-4312-8572-7B09685ACEBD" : null,
-                  "B91C7CA3-4AB1-4253-9A84-07383168A8A8" : null
+                  }
                 },
                 "factory" : null,
                 "runtimeAttributes" : [

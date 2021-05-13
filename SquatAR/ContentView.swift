@@ -23,9 +23,14 @@ struct ContentView: View {
       Text("Sorry, your device does not have all of the features required by this app.")
     } else {
       ZStack {
+//        MockARView()
         ARViewContainer(brains: poopBrains)
           .edgesIgnoringSafeArea(.all)
-          .overlay(overlayView)
+//                  .overlay(overlayView)
+
+//        overlayView
+//          .offset(x: -220, y: 0) // iPhone max
+//          .offset(x: -150, y: -630) // ipad pro
         VStack {
           if showingHelp {
             VStack {
@@ -44,7 +49,7 @@ struct ContentView: View {
               BlurTextView {
                 VStack {
                   Text(
-                    "To use this app, have someone squat while you look at them through your device. This will cause poop to appear on their butt!\n \n\"3d Poop Emoji\" by Dimensión N is licensed under Creative Commons Attribution.")
+                    "To use this app, have someone squat while you look at them through your device with their permission. This will cause a shape to drop from their body to the floor.")
                 }
               }
               .padding()
@@ -203,8 +208,8 @@ class PoopArView: ARView, ARCoachingOverlayViewDelegate {
   func setupPoop() {
     boxAnchor = try! Experience.loadBox()
     
-    (boxAnchor.poop as? HasPhysics)?.physicsBody?.mode = .static
-    boxAnchor.poop?.isEnabled = false
+    (boxAnchor.sphere as? HasPhysics)?.physicsBody?.mode = .static
+    boxAnchor.sphere?.isEnabled = false
     self.scene.addAnchor(boxAnchor)
     setUp = true
   }
@@ -212,7 +217,7 @@ class PoopArView: ARView, ARCoachingOverlayViewDelegate {
   // trigger when pooping becomes true
   public func startPoop() {
     
-    activePoop = boxAnchor.poop?.clone(recursive: true)
+    activePoop = boxAnchor.sphere?.clone(recursive: true)
     activePoop?.scale = SIMD3(repeating: 0)
     (activePoop as? HasPhysics)?.physicsBody?.mode = .static
     activePoop?.isEnabled = true

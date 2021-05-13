@@ -17,8 +17,9 @@ struct MockARView: View {
     VStack {
       VideoPlayer(player: video)
         .scaledToFill() // use this when making video for edge-to-edge phones
-        .scaleEffect(1.3)
-        //                .offset(x: -22, y: 0)
+//        .scaleEffect(1.1).offset(x: -22, y: 0) // iphone max
+//        .scaleEffect(1.7) // ipad pro 12 inch
+                        
         .edgesIgnoringSafeArea(.all)
         .onAppear {
           video.play()

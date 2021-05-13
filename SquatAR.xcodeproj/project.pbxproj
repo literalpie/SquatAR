@@ -35,6 +35,7 @@
 		45C82F2625869202005C91ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		45C82F2925869202005C91ED /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		45C82F2B25869202005C91ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		45E33D87264CA183007E6F74 /* app-recording.MP4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "app-recording.MP4"; sourceTree = "<group>"; };
 		45EDD76D26361B7A00E768E9 /* Another close poop.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "Another close poop.mov"; sourceTree = "<group>"; };
 		45EDD76F26361E6600E768E9 /* AR Session 10.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "AR Session 10.mov"; sourceTree = "<group>"; };
 		45EDD7702636203C00E768E9 /* app-recording.MP4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "app-recording.MP4"; sourceTree = "<group>"; };
@@ -74,6 +75,7 @@
 				45667929261D42030005FFB5 /* app-preview.gif */,
 				45612B2F263C626400B71596 /* AR Sessions */,
 				4530CEED261E7E3500C02955 /* poop.blend */,
+				45E33D87264CA183007E6F74 /* app-recording.MP4 */,
 				45C82F1F258691FF005C91ED /* SquatAR */,
 				45C82F1E258691FF005C91ED /* Products */,
 			);

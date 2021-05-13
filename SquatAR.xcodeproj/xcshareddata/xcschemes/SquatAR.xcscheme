@@ -52,7 +52,7 @@
          </BuildableReference>
       </BuildableProductRunnable>
       <DeviceSensorReplayFileReference
-         identifier = "../../Circles.mov">
+         identifier = "../../AR Sessions/Squat walking.mov">
       </DeviceSensorReplayFileReference>
    </LaunchAction>
    <ProfileAction
